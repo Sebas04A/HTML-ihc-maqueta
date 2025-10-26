@@ -1782,54 +1782,187 @@
                     <!-- NUEVO MODAL: VER ALERTA -->
                     <div
                         id="modal-view-alert"
-                        class="fixed inset-0 z-50 items-center justify-center hidden bg-gray-900 bg-opacity-75"
+                        class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75 font-sans hidden"
                     >
                         <div
-                            class="w-full max-w-sm p-6 bg-white rounded-lg shadow-xl dark:bg-gray-800"
+                            class="relative w-full max-w-sm rounded-2xl bg-slate-900 p-8 shadow-2xl ring-1 ring-white/10"
                         >
-                            <h2 id="view-alert-title" class="mb-2 text-xl font-bold">
-                                Título de la Alerta
-                            </h2>
-                            <p
-                                id="view-alert-date"
-                                class="mb-4 text-sm text-gray-500 dark:text-gray-400"
+                            <button
+                                id="alert-modal-cancel"
+                                class="absolute right-4 top-4 text-slate-400 transition-colors hover:text-slate-200 focus:outline-none focus:ring-2 focus:ring-slate-600 focus:ring-offset-2 focus:ring-offset-slate-900"
                             >
-                                Fecha
-                            </p>
-                            <p id="view-alert-description" class="mb-4">Descripción...</p>
-                            <div id="view-alert-location" class="mb-4 text-sm"></div>
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    class="h-6 w-6"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M6 18L18 6M6 6l12 12"
+                                    />
+                                </svg>
+                            </button>
+
+                            <div class="flex flex-col">
+                                <h2 id="view-alert-title" class="text-xl font-bold text-white">
+                                    Mantenimiento aire acondicionado
+                                </h2>
+                                <div
+                                    id="view-alert-date"
+                                    class="mt-1.5 flex items-center gap-2 text-sm text-slate-400"
+                                >
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        class="h-4 w-4"
+                                        viewBox="0 0 20 20"
+                                        fill="currentColor"
+                                    >
+                                        <path
+                                            fill-rule="evenodd"
+                                            d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+                                            clip-rule="evenodd"
+                                        />
+                                    </svg>
+                                    <span>En 2 días (Repite anual)</span>
+                                </div>
+                            </div>
+
+                            <hr class="my-4 border-slate-700" />
+
+                            <div class="flex flex-col space-y-3 text-slate-300">
+                                <p id="view-alert-description" class="text-base">
+                                    Llamar al técnico.
+                                </p>
+
+                                <div class="flex flex-col space-y-3 pt-2">
+                                    <div class="flex items-start gap-3">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="h-5 w-5 flex-shrink-0 text-slate-400"
+                                            viewBox="0 0 20 20"
+                                            fill="currentColor"
+                                        >
+                                            <path
+                                                d="M5 3a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2V5a2 2 0 00-2-2H5zm0 2h10v7h-2V7a1 1 0 00-1-1H6V5z"
+                                            />
+                                        </svg>
+                                        <div class="flex flex-col text-sm">
+                                            <span class="font-semibold text-slate-400">Objeto</span>
+                                            <span id="view-alert-object"
+                                                >Aire Acondicionado Split</span
+                                            >
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start gap-3">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="h-5 w-5 flex-shrink-0 text-slate-400"
+                                            viewBox="0 0 20 20"
+                                            fill="currentColor"
+                                        >
+                                            <path
+                                                fill-rule="evenodd"
+                                                d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                                                clip-rule="evenodd"
+                                            />
+                                        </svg>
+                                        <div class="flex flex-col text-sm">
+                                            <span class="font-semibold text-slate-400">Lugar</span>
+                                            <span id="view-alert-location"
+                                                >Casa Principal ▸ Dormitorio Principal</span
+                                            >
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr class="my-4 border-slate-700" />
 
                             <div id="view-alert-buttons" class="flex flex-col space-y-3">
                                 <button
                                     id="alert-modal-modify"
-                                    class="w-full px-4 py-2 font-semibold text-white bg-blue-600 rounded-lg hover:bg-blue-700"
+                                    class="flex w-full items-center justify-center gap-2 rounded-lg bg-[--accent] px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-slate-900"
                                 >
-                                    Modificar
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        class="h-4 w-4"
+                                        viewBox="0 0 20 20"
+                                        fill="currentColor"
+                                    >
+                                        <path
+                                            d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"
+                                        />
+                                        <path
+                                            fill-rule="evenodd"
+                                            d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
+                                            clip-rule="evenodd"
+                                        />
+                                    </svg>
+                                    <span>Modificar</span>
                                 </button>
-                                <button
-                                    id="alert-modal-deactivate"
-                                    class="w-full px-4 py-2 font-semibold text-white bg-yellow-500 rounded-lg hover:bg-yellow-600"
-                                >
-                                    Desactivar
-                                </button>
-                                <button
-                                    id="alert-modal-reactivate"
-                                    class="w-full px-4 py-2 font-semibold text-white bg-green-500 rounded-lg hover:bg-green-600"
-                                >
-                                    Reactivar
-                                </button>
-                                <button
-                                    id="alert-modal-delete"
-                                    class="w-full px-4 py-2 font-semibold text-white bg-red-600 rounded-lg hover:bg-red-700"
-                                >
-                                    Eliminar
-                                </button>
-                                <button
-                                    id="alert-modal-cancel"
-                                    class="w-full px-4 py-2 font-semibold text-gray-700 bg-gray-200 rounded-lg hover:bg-gray-300 dark:bg-gray-600 dark:text-gray-200 dark:hover:bg-gray-500"
-                                >
-                                    Cancelar
-                                </button>
+
+                                <div class="grid grid-cols-2 gap-3">
+                                    <button
+                                        id="alert-modal-delete"
+                                        class="flex w-full items-center justify-center gap-2 rounded-lg border border-rose-700 px-4 py-2 text-sm font-semibold text-[--danger] shadow-sm transition-colors hover:bg-rose-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2 focus:ring-offset-slate-900"
+                                    >
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="h-4 w-4"
+                                            viewBox="0 0 20 20"
+                                            fill="currentColor"
+                                        >
+                                            <path
+                                                fill-rule="evenodd"
+                                                d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm4 0a1 1 0 012 0v6a1 1 0 11-2 0V8z"
+                                                clip-rule="evenodd"
+                                            />
+                                        </svg>
+                                        <span>Eliminar</span>
+                                    </button>
+
+                                    <button
+                                        id="alert-modal-deactivate"
+                                        class="flex w-full items-center justify-center gap-2 rounded-lg border border-amber-500 px-4 py-2 text-sm font-semibold text-amber-500 shadow-sm transition-colors hover:bg-amber-500 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 focus:ring-offset-slate-900"
+                                    >
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="h-4 w-4"
+                                            viewBox="0 0 20 20"
+                                            fill="currentColor"
+                                        >
+                                            <path
+                                                fill-rule="evenodd"
+                                                d="M13.477 14.89A6 6 0 015.11 6.524l8.367 8.367zm1.414-1.414L6.524 5.11a6 6 0 018.367 8.367zM18 10a8 8 0 11-16 0 8 8 0 0116 0z"
+                                                clip-rule="evenodd"
+                                            />
+                                        </svg>
+                                        <span>Desactivar</span>
+                                    </button>
+
+                                    <button
+                                        id="alert-modal-reactivate"
+                                        class="col-span-2 flex w-full items-center justify-center gap-2 rounded-lg bg-teal-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 focus:ring-offset-slate-900"
+                                    >
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="h-4 w-4"
+                                            viewBox="0 0 20 20"
+                                            fill="currentColor"
+                                        >
+                                            <path
+                                                fill-rule="evenodd"
+                                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                                clip-rule="evenodd"
+                                            />
+                                        </svg>
+                                        <span>Reactivar</span>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -2859,6 +2992,7 @@
                 const alertLocationInput = document.getElementById('alert-location')
                 const alertObjectInput = document.getElementById('alert-object')
                 const alertRepetitiveCheckbox = document.getElementById('alert-repetitive')
+                const alertRepeatFrequencyInput = document.getElementById('alert-repeat-frequency')
                 const alertRepeatOptions = document.getElementById('alert-repeat-options')
                 const alertTabs = document.querySelectorAll('.alert-tab')
                 const alertLists = document.querySelectorAll('.alert-list')
@@ -2875,11 +3009,17 @@
                 const viewAlertDate = document.getElementById('view-alert-date')
                 const viewAlertDescription = document.getElementById('view-alert-description')
                 const viewAlertLocation = document.getElementById('view-alert-location')
+                const viewAlertObject = document.getElementById('view-alert-object')
                 const alertModalModify = document.getElementById('alert-modal-modify')
                 const alertModalDeactivate = document.getElementById('alert-modal-deactivate')
                 const alertModalReactivate = document.getElementById('alert-modal-reactivate')
                 const alertModalDelete = document.getElementById('alert-modal-delete')
                 const alertModalCancel = document.getElementById('alert-modal-cancel')
+
+                modalViewAlert.addEventListener('click', () => {
+                    modalViewAlert.classList.add('hidden')
+                    modalViewAlert.classList.remove('flex')
+                })
 
                 // --- MODAL GLOBAL: Cambios guardados ---
                 const savedOkModal = document.getElementById('saved-ok-modal')
@@ -4047,6 +4187,9 @@
                         saveAlertBtn.textContent = 'Guardar Cambios'
                         modalAddAlert.dataset.editingId = alert.id
 
+                        console.log(alert)
+                        console.log(alertTitleInput)
+
                         alertTitleInput.value = alert.title
                         alertDescriptionInput.value = alert.description
                         alertDateInput.value = alert.date
@@ -4102,9 +4245,8 @@
                     let locationHTML = ''
                     if (objectName) locationHTML += `<p><b>Objeto:</b> ${objectName}</p>`
                     if (locationPath) locationHTML += `<p><b>Lugar:</b> ${locationPath}</p>`
-                    viewAlertLocation.innerHTML =
-                        locationHTML ||
-                        '<p class="text-gray-500 dark:text-gray-400">Sin ubicación/objeto asociado.</p>'
+                    viewAlertLocation.innerHTML = locationPath
+                    viewAlertObject.innerHTML = objectName
 
                     if (!alert.active) {
                         alertModalModify.classList.add('hidden')
@@ -4126,6 +4268,7 @@
                     }
 
                     modalViewAlert.classList.remove('hidden')
+
                     modalViewAlert.classList.add('flex')
                 }
 
@@ -4347,10 +4490,12 @@
                         currentAlertTab = tabName
 
                         alertTabs.forEach(t => {
-                            t.classList.remove('text-blue-600', 'border-blue-600')
+                            t.classList.remove('text-blue-600', 'border-blue-600', 'border-b-2')
+                            // t.classList.remove
                             t.classList.add('text-gray-500', 'dark:text-gray-400')
                         })
-                        tab.classList.add('text-blue-600', 'border-blue-600')
+                        tab.classList.add('text-blue-600', 'border-blue-600', 'border-b-2')
+
                         tab.classList.remove('text-gray-500', 'dark:text-gray-400')
 
                         alertLists.forEach(list => list.classList.add('hidden'))
@@ -4493,6 +4638,75 @@
                     })
                 }
             })
+            function populateCategorySelect(selectedValue) {
+                const detailCategory = document.getElementById('detail-category') // ahora va a ser <select>
+                // Rellenar el <select> de categoría con opciones conocidas
+                // y marcar la actual
+                if (!detailCategory) return
+                detailCategory.innerHTML = '' // limpiamos
+
+                knownCategories.forEach(cat => {
+                    const opt = document.createElement('option')
+                    opt.value = cat
+                    opt.textContent = cat
+                    if (cat === selectedValue) {
+                        opt.selected = true
+                    }
+                    detailCategory.appendChild(opt)
+                })
+            }
+            const detailLocationList = document.getElementById('detail-location-list') // lo vamos a crear
+            const detailImage = document.getElementById('detail-image')
+            const detailName = document.getElementById('detail-name')
+            const detailLocation = document.getElementById('detail-location')
+            const detailQty = document.getElementById('detail-qty')
+            const detailCategory = document.getElementById('detail-category') // ahora va a ser <select>
+            const detailNotes = document.getElementById('detail-notes')
+
+            function openObjectDetail(objectId) {
+                console.log('abrir detalle de:', objectId)
+                const obj = objectDB[objectId]
+                if (!obj) return
+
+                currentObjectId = objectId
+
+                // Llenar UI
+                detailImage.src = obj.img || ''
+                detailImage.alt = obj.nombre || 'Objeto'
+
+                detailName.value = obj.nombre || ''
+                // Mostrar la ubicación con el símbolo ► en vez de > solo visualmente
+                if (obj.ubicacion) {
+                    detailLocation.value = obj.ubicacion.replace(/\s*>\s*/g, ' ► ')
+                } else {
+                    detailLocation.value = ''
+                }
+                detailQty.value = obj.cantidad != null ? obj.cantidad : ''
+                detailNotes.value = obj.notas || ''
+
+                // categoría ahora es <select>, la llenamos dinámicamente
+                populateCategorySelect(obj.categoria)
+                populateUbicaciones(detailLocation)
+
+                detailLocation.value = obj.ubicacionId || ''
+                console.log('ubicaciones conocidas:', knownLocations)
+                console.log('ubicación del objeto:', obj.ubicacionId)
+
+                // ubicaciones sugeridas
+                // populateLocationDropdown(obj.ubicacionId)
+
+                // Navegación visual
+                hide(screenHome)
+                show(screenObjectDetail)
+                if (footerNav) hide(footerNav)
+
+                // asegúrate que el panel dropdown de ubicaciones esté oculto al entrar
+                if (detailLocationList) hide(detailLocationList)
+
+                // scroll to top del detalle
+                screenObjectDetail.scrollTop = 0
+            }
+
             document.addEventListener('DOMContentLoaded', function () {
                 // Referencias del modal de vista
                 const modalViewObject = document.getElementById('modal-view-object')
@@ -4511,37 +4725,6 @@
                 const dateEl = document.getElementById('view-object-date')
 
                 // util: abrir modal con datos
-                function openObjectDetail(data) {
-                    // imagen
-                    if (data.photo) {
-                        photoEl.src = data.photo
-                        photoEl.classList.remove('hidden')
-                        photoPlaceholder.classList.add('hidden')
-                    } else {
-                        photoEl.classList.add('hidden')
-                        photoPlaceholder.classList.remove('hidden')
-                    }
-
-                    // texto / selects
-                    nameEl.value = data.name || ''
-                    descEl.value = data.desc || ''
-                    catEl.value = data.category || 'Seleccionar Categoría'
-                    qtyEl.value = data.qty || 1
-                    unitsEl.value = data.units || 'Unidades'
-                    locEl.value = data.location || 'Casa Principal ► Cocina ► Despensa'
-                    costEl.value = data.cost || ''
-                    dateEl.value = data.buyDate || ''
-
-                    // mostrar modal
-                    modalViewObject.classList.remove('hidden')
-                }
-
-                // cerrar modal
-                if (closeViewObjectBtn) {
-                    closeViewObjectBtn.addEventListener('click', function () {
-                        modalViewObject.classList.add('hidden')
-                    })
-                }
 
                 // listeners para cada item reciente
                 const recentTaladro = document.getElementById('recent-taladro')
@@ -4807,33 +4990,10 @@
             const footerNav = document.querySelector('footer.nav-bar')
 
             document.addEventListener('DOMContentLoaded', () => {
-                const detailImage = document.getElementById('detail-image')
-                const detailName = document.getElementById('detail-name')
-                const detailLocation = document.getElementById('detail-location')
-                const detailQty = document.getElementById('detail-qty')
-                const detailCategory = document.getElementById('detail-category') // ahora va a ser <select>
-                const detailNotes = document.getElementById('detail-notes')
-
                 const searchInput = document.getElementById('search-input') // input
                 const searchClearBtn = document.getElementById('search-clear-btn') // X
                 const resultsBox = document.getElementById('home-search-results') // caja de resultados
-                const detailLocationList = document.getElementById('detail-location-list') // lo vamos a crear
-                function populateCategorySelect(selectedValue) {
-                    // Rellenar el <select> de categoría con opciones conocidas
-                    // y marcar la actual
-                    if (!detailCategory) return
-                    detailCategory.innerHTML = '' // limpiamos
 
-                    knownCategories.forEach(cat => {
-                        const opt = document.createElement('option')
-                        opt.value = cat
-                        opt.textContent = cat
-                        if (cat === selectedValue) {
-                            opt.selected = true
-                        }
-                        detailCategory.appendChild(opt)
-                    })
-                }
                 // function populateLocationDropdown(currentLocation) {
                 //     // Rellenar la lista de ubicaciones sugeridas para que el user pueda tocar una
                 //     if (!detailLocationList) return
@@ -4856,43 +5016,6 @@
                 //     // Si la ubicación actual no está en la lista, la primera vez igual la dejamos en el input.
                 //     detailLocation.value = currentLocation || ''
                 // }
-                function openObjectDetail(objectId) {
-                    const obj = objectDB[objectId]
-                    if (!obj) return
-
-                    currentObjectId = objectId
-
-                    // Llenar UI
-                    detailImage.src = obj.img || ''
-                    detailImage.alt = obj.nombre || 'Objeto'
-
-                    detailName.value = obj.nombre || ''
-                    // Mostrar la ubicación con el símbolo ► en vez de > solo visualmente
-                    if (obj.ubicacion) {
-                        detailLocation.value = obj.ubicacion.replace(/\s*>\s*/g, ' ► ')
-                    } else {
-                        detailLocation.value = ''
-                    }
-                    detailQty.value = obj.cantidad != null ? obj.cantidad : ''
-                    detailNotes.value = obj.notas || ''
-
-                    // categoría ahora es <select>, la llenamos dinámicamente
-                    populateCategorySelect(obj.categoria)
-
-                    // ubicaciones sugeridas
-                    populateLocationDropdown(obj.ubicacion)
-
-                    // Navegación visual
-                    hide(screenHome)
-                    show(screenObjectDetail)
-                    if (footerNav) hide(footerNav)
-
-                    // asegúrate que el panel dropdown de ubicaciones esté oculto al entrar
-                    if (detailLocationList) hide(detailLocationList)
-
-                    // scroll to top del detalle
-                    screenObjectDetail.scrollTop = 0
-                }
 
                 const inventoryObjects = [
                     {
@@ -5079,18 +5202,11 @@
                 const resultsBox = document.getElementById('home-search-results')
 
                 // inputs detalle objeto
-                const detailImage = document.getElementById('detail-image')
-                const detailName = document.getElementById('detail-name')
-                const detailLocation = document.getElementById('detail-location')
-                const detailQty = document.getElementById('detail-qty')
-                const detailCategory = document.getElementById('detail-category') // ahora va a ser <select>
-                const detailNotes = document.getElementById('detail-notes')
 
                 // UI auxiliar en detalle
                 const detailLocationPickerBtn = document.getElementById(
                     'detail-location-picker-btn'
                 ) // lo vamos a crear
-                const detailLocationList = document.getElementById('detail-location-list') // lo vamos a crear
 
                 const backBtn = document.getElementById('object-detail-back-btn')
                 const saveBtn = document.getElementById('detail-save-btn')
@@ -5147,50 +5263,6 @@
                     detailLocation.value = currentLocation || ''
                 }
 
-                function openObjectDetail(objectId) {
-                    console.log('abrir detalle de:', objectId)
-                    const obj = objectDB[objectId]
-                    if (!obj) return
-
-                    currentObjectId = objectId
-
-                    // Llenar UI
-                    detailImage.src = obj.img || ''
-                    detailImage.alt = obj.nombre || 'Objeto'
-
-                    detailName.value = obj.nombre || ''
-                    // Mostrar la ubicación con el símbolo ► en vez de > solo visualmente
-                    if (obj.ubicacion) {
-                        detailLocation.value = obj.ubicacion.replace(/\s*>\s*/g, ' ► ')
-                    } else {
-                        detailLocation.value = ''
-                    }
-                    detailQty.value = obj.cantidad != null ? obj.cantidad : ''
-                    detailNotes.value = obj.notas || ''
-
-                    // categoría ahora es <select>, la llenamos dinámicamente
-                    populateCategorySelect(obj.categoria)
-                    populateUbicaciones(detailLocation)
-
-                    detailLocation.value = obj.ubicacionId || ''
-                    console.log('ubicaciones conocidas:', knownLocations)
-                    console.log('ubicación del objeto:', obj.ubicacionId)
-
-                    // ubicaciones sugeridas
-                    // populateLocationDropdown(obj.ubicacionId)
-
-                    // Navegación visual
-                    hide(screenHome)
-                    show(screenObjectDetail)
-                    if (footerNav) hide(footerNav)
-
-                    // asegúrate que el panel dropdown de ubicaciones esté oculto al entrar
-                    if (detailLocationList) hide(detailLocationList)
-
-                    // scroll to top del detalle
-                    screenObjectDetail.scrollTop = 0
-                }
-
                 // ---------------------------
                 // 3. HELPERS DE UI GENERAL
                 // ---------------------------
@@ -5231,6 +5303,7 @@
                 // guardar cambios (mostrar modal de éxito)
                 if (saveBtn) {
                     saveBtn.addEventListener('click', () => {
+                        console.log('guardar cambios en objeto', currentObjectId)
                         if (!currentObjectId) return
                         const obj = objectDB[currentObjectId]
                         if (!obj) return

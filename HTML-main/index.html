@@ -1999,14 +1999,14 @@
 
                         <!-- imagen grande -->
                         <div
-                            class="w-full mb-4 overflow-hidden rounded-xl bg-gray-200 border border-gray-300 dark:bg-gray-700 dark:border-gray-600 flex items-center justify-center"
-                            style="height: 120px"
+                            class="w-full mb-4 overflow-hidden rounded-xl bg-gradient-to-br from-gray-50 to-gray-100 border border-gray-300 dark:from-gray-800 dark:to-gray-700 dark:border-gray-600 flex items-center justify-center"
+                            style="height: 200px"
                         >
                             <img
                                 id="detail-image"
                                 src=""
                                 alt="Imagen del Artículo"
-                                class="object-cover max-h-24 w-auto mx-auto"
+                                class="object-cover w-full h-full transition-transform duration-150 hover:scale-105"
                             />
                         </div>
 
@@ -3041,6 +3041,15 @@
                 navButtons.forEach(button => {
                     button.addEventListener('click', () => {
                         const screenId = button.dataset.screen
+                        
+                        // Si es el botón de home y hay un input de búsqueda activo, cerrarlo
+                        if (screenId === 'home') {
+                            const searchInput = document.getElementById('search-input-active')
+                            if (searchInput) {
+                                searchInput.blur() // Quita el foco del input
+                            }
+                        }
+                        
                         navigateToScreen(screenId)
                     })
                 })

@@ -715,7 +715,7 @@
                                 <h2
                                     class="mb-3 text-lg font-semibold text-gray-800 dark:text-white"
                                 >
-                                    Objetos Añadidos
+                                    Artículos Añadidos
                                 </h2>
 
                                 <div
@@ -935,7 +935,7 @@
                                         stroke-linecap="round"
                                         stroke-linejoin="round"
                                         d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h11"
-                                    />
+                                    />  
                                 </svg>
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -1994,7 +1994,7 @@
                                     ></path>
                                 </svg>
                             </button>
-                            <h1 class="text-2xl font-bold text-gray-800 dark:text-white">Objeto</h1>
+                            <h1 class="text-2xl font-bold text-gray-800 dark:text-white">Detalle del Artículo</h1>
                         </div>
 
                         <!-- imagen grande -->
@@ -2005,7 +2005,7 @@
                             <img
                                 id="detail-image"
                                 src=""
-                                alt="Imagen del objeto"
+                                alt="Imagen del Artículo"
                                 class="object-cover max-h-24 w-auto mx-auto"
                             />
                         </div>
@@ -2119,7 +2119,7 @@
                                     id="detail-delete-btn"
                                     class="w-full py-3 font-semibold border-[--danger]! text-red-600 bg-white border border-red-300 rounded-lg hover:bg-red-50 dark:bg-gray-800 dark:border-red-500 dark:text-red-400 dark:hover:bg-gray-700 transition"
                                 >
-                                    Eliminar objeto
+                                    Eliminar Artículo
                                 </button>
                             </div>
                         </div>
@@ -3505,7 +3505,7 @@
                         ).parentElement.style.display = 'none'
                     } else {
                         homeSearchResults.innerHTML =
-                            '<p class="py-6 text-center text-gray-500 dark:text-gray-400">No se encontraron objetos.</p>'
+                            '<p class="py-6 text-center text-gray-500 dark:text-gray-400">No se encontraron Artículos.</p>'
                         document.querySelector(
                             '#screen-home .grid.grid-cols-2'
                         ).parentElement.style.display = 'none'
@@ -3520,7 +3520,7 @@
                     modal.classList.remove('hidden')
                     modal.classList.add('flex')
                     // Cambiar título
-                    modal.querySelector('h2').textContent = 'Detalle del Objeto'
+                    modal.querySelector('h2').textContent = 'Detalle del Artículo'
 
                     // Rellenar campos principales
                     modalObjectNameInput.value = obj.nombre || ''
@@ -3674,7 +3674,7 @@
                             navStack.push({ level: 'propiedades', id: null })
                             navStack.push({ level: 'habitaciones', id: propId })
                             navStack.push({ level: 'contenidos', id: habId })
-                            renderInventory('objetos', parentId)
+                            renderInventory('Artículos', parentId)
                         } else if (parentType === 'habitaciones') {
                             // Buscar la propiedad
                             const hab = inventoryDB.habitaciones[parentId]
@@ -4025,7 +4025,7 @@
                              }
                              ${
                                  objectName
-                                     ? `<p class="text-sm text-gray-500 dark:text-gray-400 mt-2 truncate"><b>Objeto:</b> ${objectName}</p>`
+                                     ? `<p class="text-sm text-gray-500 dark:text-gray-400 mt-2 truncate"><b>Artículo:</b> ${objectName}</p>`
                                      : ''
                              }
                              ${
@@ -4662,7 +4662,7 @@
 
                 detailLocation.value = obj.ubicacionId || ''
                 console.log('ubicaciones conocidas:', knownLocations)
-                console.log('ubicación del objeto:', obj.ubicacionId)
+                console.log('ubicación del Artículo:', obj.ubicacionId)
 
                 // ubicaciones sugeridas
                 // populateLocationDropdown(obj.ubicacionId)
@@ -5274,7 +5274,7 @@
                 // guardar cambios (mostrar modal de éxito)
                 if (saveBtn) {
                     saveBtn.addEventListener('click', () => {
-                        console.log('guardar cambios en objeto', currentObjectId)
+                        console.log('guardar cambios en Artículo', currentObjectId)
                         if (!currentObjectId) return
                         const obj = objectDB[currentObjectId]
                         if (!obj) return
@@ -5521,7 +5521,7 @@
                     Confirmar eliminación
                 </div>
                 <div class="text-sm text-gray-600 dark:text-gray-300 mb-5">
-                    ¿Seguro que deseas borrar este objeto? Esta acción no se puede deshacer.
+                    ¿Seguro que deseas borrar este Artículo? Esta acción no se puede deshacer.
                 </div>
                 <div class="flex justify-end gap-3">
                     <button
@@ -5621,7 +5621,7 @@
                             Eliminado
                         </div>
                         <div class="text-sm text-gray-600 dark:text-gray-300 mt-1">
-                            Objeto eliminado correctamente.
+                            Artículo eliminado correctamente.
                         </div>
                     </div>
                 </div>

@@ -3475,8 +3475,8 @@
                                     addObjectBtn.dispatchEvent(new Event('click'))
                                 } else {
                                     modalGenericTitle.textContent = config.text.replace(
-                                        '+',
-                                        'Añadir'
+                                        '+ ',
+                                        ''
                                     )
                                     modalGenericInput.placeholder = `Nombre de ${config.type}`
                                     modalAddGeneric.dataset.addType = config.type

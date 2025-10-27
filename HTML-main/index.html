@@ -1527,7 +1527,7 @@
                                         class="w-full p-2 mt-2 border rounded"
                                         rows="2"
                                     ></textarea>
-                                    <select class="w-full p-2 mt-2 border rounded">
+                                    <select class="w-full p-3 mt-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200">
                                         <option>Seleccionar Categoría</option>
                                         <option>Electrónica</option>
                                         <option>Documentos</option>
@@ -1547,7 +1547,7 @@
                                     </div>
                                     <div>
                                         <label class="font-semibold">Unidad</label>
-                                        <select class="w-full p-2 mt-2 border rounded">
+                                        <select class="w-full p-3 mt-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200">
                                             <option>Unidades</option>
                                             <option>kg</option>
                                             <option>Litros</option>
@@ -1558,7 +1558,7 @@
                                     <label class="font-semibold">3. ¿Dónde está?</label>
                                     <select
                                         id="location-object"
-                                        class="w-full p-2 mt-2 border rounded"
+                                        class="w-full p-3 mt-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"
                                     ></select>
                                 </div>
                                 <!-- Pasos opcionales -->
@@ -1720,7 +1720,7 @@
                                         >
                                         <select
                                             id="alert-location"
-                                            class="w-full p-2 mt-1 border rounded"
+                                            class="w-full p-3 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"
                                         >
                                             <option value="">Ninguna</option>
                                         </select>
@@ -1731,7 +1731,7 @@
                                         >
                                         <select
                                             id="alert-object"
-                                            class="w-full p-2 mt-1 border rounded"
+                                            class="w-full p-3 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"
                                         >
                                             <option value="">Ninguno</option>
                                         </select>
@@ -2033,7 +2033,7 @@
                                 <div class="relative">
                                     <select
                                         id="detail-location"
-                                        class="w-full p-2 mt-1 border rounded"
+                                        class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"
                                     >
                                         <option value="">Ninguna</option>
                                     </select>
@@ -3163,9 +3163,19 @@
                                     children: [],
                                 })
                                 hideGenericModal()
+                                // Siempre actualizar la lista si estamos en la pantalla de propiedades
                                 if (!screenProperties.classList.contains('hidden')) {
+                                    console.log('Actualizando lista de propiedades...')
                                     renderPropertiesCRUD()
+                                } else {
+                                    console.log('No estamos en la pantalla de propiedades')
                                 }
+                                // Forzar actualización adicional por si acaso
+                                setTimeout(() => {
+                                    if (!screenProperties.classList.contains('hidden')) {
+                                        renderPropertiesCRUD()
+                                    }
+                                }, 100)
                                 if (!screenInventory.classList.contains('hidden')) {
                                     renderInventory('propiedades')
                                 }

@@ -442,6 +442,15 @@
             .search-card-location {
                 @apply text-[11px] leading-tight text-gray-500 dark:text-gray-400;
             }
+
+            /* Forzar colores del título de alerta */
+            #view-alert-title {
+                color: #1f2937 !important; /* gray-800 */
+            }
+            
+            .dark #view-alert-title {
+                color: #f3f4f6 !important; /* gray-100 */
+            }
         </style>
     </head>
 
@@ -1790,11 +1799,11 @@
                         class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75 font-sans hidden"
                     >
                         <div
-                            class="relative w-full max-w-sm rounded-2xl bg-slate-900 p-8 shadow-2xl ring-1 ring-white/10"
+                            class="relative w-full max-w-sm rounded-2xl bg-white dark:bg-slate-900 p-8 shadow-2xl ring-1 ring-gray-200 dark:ring-white/10"
                         >
                             <button
                                 id="alert-modal-cancel"
-                                class="absolute right-4 top-4 text-slate-400 transition-colors hover:text-slate-200 focus:outline-none focus:ring-2 focus:ring-slate-600 focus:ring-offset-2 focus:ring-offset-slate-900"
+                                class="absolute right-4 top-4 text-gray-400 dark:text-slate-400 transition-colors hover:text-gray-600 dark:hover:text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-slate-600 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-slate-900"
                             >
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -1813,12 +1822,12 @@
                             </button>
 
                             <div class="flex flex-col">
-                                <h2 id="view-alert-title" class="text-xl font-bold text-white">
+                                <h2 id="view-alert-title" class="text-xl font-bold text-gray-800 dark:text-gray-100">
                                     Mantenimiento aire acondicionado
                                 </h2>
                                 <div
                                     id="view-alert-date"
-                                    class="mt-1.5 flex items-center gap-2 text-sm text-slate-400"
+                                    class="mt-1.5 flex items-center gap-2 text-sm text-gray-500 dark:text-slate-400"
                                 >
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -1836,9 +1845,9 @@
                                 </div>
                             </div>
 
-                            <hr class="my-4 border-slate-700" />
+                            <hr class="my-4 border-gray-200 dark:border-slate-700" />
 
-                            <div class="flex flex-col space-y-3 text-slate-300">
+                            <div class="flex flex-col space-y-3 text-gray-700 dark:text-slate-300">
                                 <p id="view-alert-description" class="text-base">
                                     Llamar al técnico.
                                 </p>
@@ -1847,7 +1856,7 @@
                                     <div class="flex items-start gap-3">
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
-                                            class="h-5 w-5 flex-shrink-0 text-slate-400"
+                                            class="h-5 w-5 flex-shrink-0 text-gray-400 dark:text-slate-400"
                                             viewBox="0 0 20 20"
                                             fill="currentColor"
                                         >
@@ -1856,7 +1865,7 @@
                                             />
                                         </svg>
                                         <div class="flex flex-col text-sm">
-                                            <span class="font-semibold text-slate-400">Objeto</span>
+                                            <span class="font-semibold text-gray-500 dark:text-slate-400">Artículo</span>
                                             <span id="view-alert-object"
                                                 >Aire Acondicionado Split</span
                                             >
@@ -1865,7 +1874,7 @@
                                     <div class="flex items-start gap-3">
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
-                                            class="h-5 w-5 flex-shrink-0 text-slate-400"
+                                            class="h-5 w-5 flex-shrink-0 text-gray-400 dark:text-slate-400"
                                             viewBox="0 0 20 20"
                                             fill="currentColor"
                                         >
@@ -1876,7 +1885,7 @@
                                             />
                                         </svg>
                                         <div class="flex flex-col text-sm">
-                                            <span class="font-semibold text-slate-400">Lugar</span>
+                                            <span class="font-semibold text-gray-500 dark:text-slate-400">Lugar</span>
                                             <span id="view-alert-location"
                                                 >Casa Principal ▸ Dormitorio Principal</span
                                             >
@@ -1885,12 +1894,12 @@
                                 </div>
                             </div>
 
-                            <hr class="my-4 border-slate-700" />
+                            <hr class="my-4 border-gray-200 dark:border-slate-700" />
 
                             <div id="view-alert-buttons" class="flex flex-col space-y-3">
                                 <button
                                     id="alert-modal-modify"
-                                    class="flex w-full items-center justify-center gap-2 rounded-lg bg-[--accent] px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-slate-900"
+                                    class="flex w-full items-center justify-center gap-2 rounded-lg bg-[--accent] px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-slate-900"
                                 >
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -1913,7 +1922,7 @@
                                 <div class="grid grid-cols-2 gap-3">
                                     <button
                                         id="alert-modal-delete"
-                                        class="flex w-full items-center justify-center gap-2 rounded-lg border border-rose-700 px-4 py-2 text-sm font-semibold text-[--danger] shadow-sm transition-colors hover:bg-rose-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2 focus:ring-offset-slate-900"
+                                        class="flex w-full items-center justify-center gap-2 rounded-lg border border-rose-700 px-4 py-2 text-sm font-semibold text-[--danger] shadow-sm transition-colors hover:bg-rose-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-slate-900"
                                     >
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
@@ -1932,7 +1941,7 @@
 
                                     <button
                                         id="alert-modal-deactivate"
-                                        class="flex w-full items-center justify-center gap-2 rounded-lg border border-amber-500 px-4 py-2 text-sm font-semibold text-amber-500 shadow-sm transition-colors hover:bg-amber-500 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 focus:ring-offset-slate-900"
+                                        class="flex w-full items-center justify-center gap-2 rounded-lg border border-amber-500 px-4 py-2 text-sm font-semibold text-amber-500 shadow-sm transition-colors hover:bg-amber-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-slate-900"
                                     >
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
@@ -1951,7 +1960,7 @@
 
                                     <button
                                         id="alert-modal-reactivate"
-                                        class="col-span-2 flex w-full items-center justify-center gap-2 rounded-lg bg-teal-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 focus:ring-offset-slate-900"
+                                        class="col-span-2 flex w-full items-center justify-center gap-2 rounded-lg bg-teal-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-slate-900"
                                     >
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
@@ -3406,13 +3415,13 @@
                         propiedades: [{ text: '+ Añadir Propiedad', type: 'propiedad' }],
                         habitaciones: [
                             { text: '+ Añadir Habitación', type: 'habitacion' },
-                            { text: '+ Añadir Objeto', type: 'objeto_principal' }, // Añadir objeto a propiedad
+                            { text: '+ Añadir Artículo', type: 'artículo_principal' }, // Añadir objeto a propiedad
                         ],
                         contenidos: [
                             { text: '+ Añadir Contenedor', type: 'contenedor' },
-                            { text: '+ Añadir Objeto', type: 'objeto_principal' }, // Añadir objeto a habitación
+                            { text: '+ Añadir Artículo', type: 'artículo_principal' }, // Añadir objeto a habitación
                         ],
-                        objetos: [{ text: '+ Añadir Objeto', type: 'objeto_principal' }], // Añadir objeto a almacenamiento
+                        objetos: [{ text: '+ Añadir Artículo', type: 'artículo_principal' }], // Añadir objeto a almacenamiento
                     }
 
                     if (buttonConfig[level]) {
@@ -4412,18 +4421,6 @@
                     if (index !== -1) alertsDB[index].active = false
                     closeViewAlertModal()
                     renderAlertsScreen()
-                    
-                    // Personalizar modal de confirmación
-                    const savedOkTitle = document.getElementById('saved-ok-title')
-                    const savedOkText = document.getElementById('saved-ok-text')
-                    if (savedOkTitle) savedOkTitle.textContent = 'Alerta desactivada'
-                    if (savedOkText) savedOkText.textContent = 'La alerta se ha desactivado correctamente.'
-                    
-                    showSavedOk(() => {
-                        // Restaurar texto original después de mostrar
-                        if (savedOkTitle) savedOkTitle.textContent = 'Cambios guardados'
-                        if (savedOkText) savedOkText.textContent = 'Se guardaron los cambios correctamente.'
-                    })
                 })
 
                 alertModalReactivate.addEventListener('click', () => {
@@ -4438,18 +4435,6 @@
                     }
                     closeViewAlertModal()
                     renderAlertsScreen()
-                    
-                    // Personalizar modal de confirmación
-                    const savedOkTitle = document.getElementById('saved-ok-title')
-                    const savedOkText = document.getElementById('saved-ok-text')
-                    if (savedOkTitle) savedOkTitle.textContent = 'Alerta reactivada'
-                    if (savedOkText) savedOkText.textContent = 'La alerta se ha reactivado correctamente.'
-                    
-                    showSavedOk(() => {
-                        // Restaurar texto original después de mostrar
-                        if (savedOkTitle) savedOkTitle.textContent = 'Cambios guardados'
-                        if (savedOkText) savedOkText.textContent = 'Se guardaron los cambios correctamente.'
-                    })
                 })
 
                 alertModalModify.addEventListener('click', () => {
@@ -5683,10 +5668,10 @@
                         ✓
                     </div>
                     <div>
-                        <div id="saved-ok-title" class="text-lg font-semibold text-gray-800 dark:text-gray-100">
+                        <div class="text-lg font-semibold text-gray-800 dark:text-gray-100">
                             Cambios guardados
                         </div>
-                        <div id="saved-ok-text" class="text-sm text-gray-600 dark:text-gray-300 mt-1">
+                        <div class="text-sm text-gray-600 dark:text-gray-300 mt-1">
                             Se guardaron los cambios correctamente.
                         </div>
                     </div>

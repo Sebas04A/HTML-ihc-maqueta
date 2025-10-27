@@ -2168,52 +2168,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- MODAL NOTIFICACIONES -->
-                <div
-                    id="notif-modal"
-                    class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40 hidden"
-                >
-                    <div class="bg-white rounded-xl shadow-lg p-6 w-80 max-w-full text-center">
-                        <div class="mb-4">
-                            <svg
-                                class="mx-auto mb-2 w-12 h-12 text-blue-500"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="2"
-                                viewBox="0 0 24 24"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h11"
-                                />
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    d="M12 17v1a2 2 0 104 0v-1"
-                                />
-                            </svg>
-                            <h2 class="text-lg font-semibold mb-2">Notificaciones activadas</h2>
-                            <p class="text-gray-600">
-                                Ahora recibirás notificaciones importantes en tu dispositivo.
-                            </p>
-                        </div>
-                        <div class="flex justify-center gap-4 mt-6">
-                            <button
-                                id="notif-confirm"
-                                class="px-4 py-2 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition"
-                            >
-                                Confirmar
-                            </button>
-                            <button
-                                id="notif-cancel"
-                                class="px-4 py-2 bg-gray-200 text-black rounded-lg font-semibold hover:bg-gray-300 transition dark:bg-gray-700 dark:text-black dark:hover:bg-gray-600 dark:border dark:border-gray-600"
-                            >
-                                Cancelar
-                            </button>
-                        </div>
-                    </div>
-                </div>
                 <!-- NUEVO BOTÓN FLOTANTE PARA ALERTAS -->
 
                 <!-- NUEVO FOOTER PARA SELECCIÓN DE ALERTAS -->
@@ -2812,29 +2766,6 @@
                             if (typeof mainScreens !== 'undefined' && mainScreens)
                                 mainScreens.style.display = 'none'
                             logoutModal.classList.add('hidden')
-                        })
-                }
-            })
-            // Modal de notificaciones al activar el switch
-            document.addEventListener('DOMContentLoaded', function () {
-                const notifSwitch = document.getElementById('notif-switch')
-                const notifModal = document.getElementById('notif-modal')
-                const notifConfirm = document.getElementById('notif-confirm')
-                const notifCancel = document.getElementById('notif-cancel')
-                if (notifSwitch && notifModal) {
-                    notifSwitch.addEventListener('change', function (e) {
-                        if (notifSwitch.checked) {
-                            notifModal.classList.remove('hidden')
-                        }
-                    })
-                    notifConfirm &&
-                        notifConfirm.addEventListener('click', function () {
-                            notifModal.classList.add('hidden')
-                        })
-                    notifCancel &&
-                        notifCancel.addEventListener('click', function () {
-                            notifModal.classList.add('hidden')
-                            notifSwitch.checked = false
                         })
                 }
             })
@@ -4552,9 +4483,6 @@
             document.addEventListener('DOMContentLoaded', function () {
                 // elementos principales del panel de notificaciones
                 const notifSwitch = document.getElementById('notif-switch')
-                const notifModal = document.getElementById('notif-modal')
-                const notifConfirm = document.getElementById('notif-confirm')
-                const notifCancel = document.getElementById('notif-cancel')
 
                 // engranaje y panel
                 const notifConfigBtn = document.getElementById('notif-config-btn') // botón ⚙
@@ -4577,16 +4505,15 @@
                 }
 
                 // al cambiar el switch global
-                if (notifSwitch && notifModal) {
+                if (notifSwitch) {
                     notifSwitch.addEventListener('change', function () {
                         if (notifSwitch.checked) {
-                            // 1. mostrar modal de confirmación
-                            notifModal.classList.remove('hidden')
-
-                            // 2. mostrar engranaje
+                            // mostrar engranaje directamente
                             if (notifConfigBtn) {
                                 notifConfigBtn.classList.remove('hidden')
                             }
+                            // inicializar vibración por defecto
+                            initDefaultVibration()
                         } else {
                             // al apagar todo:
                             // esconder panel y engranaje
@@ -4598,31 +4525,6 @@
                             }
                         }
                     })
-
-                    // confirmar en el modal
-                    if (notifConfirm) {
-                        notifConfirm.addEventListener('click', function () {
-                            notifModal.classList.add('hidden')
-                        })
-                    }
-
-                    // cancelar en el modal
-                    if (notifCancel) {
-                        notifCancel.addEventListener('click', function () {
-                            notifModal.classList.add('hidden')
-
-                            // revertir global
-                            notifSwitch.checked = false
-
-                            // esconder panel y engranaje
-                            if (notifConfigPanel) {
-                                notifConfigPanel.classList.add('hidden')
-                            }
-                            if (notifConfigBtn) {
-                                notifConfigBtn.classList.add('hidden')
-                            }
-                        })
-                    }
                 }
 
                 // al tocar el engranaje

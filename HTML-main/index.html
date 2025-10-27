@@ -4412,6 +4412,18 @@
                     if (index !== -1) alertsDB[index].active = false
                     closeViewAlertModal()
                     renderAlertsScreen()
+                    
+                    // Personalizar modal de confirmación
+                    const savedOkTitle = document.getElementById('saved-ok-title')
+                    const savedOkText = document.getElementById('saved-ok-text')
+                    if (savedOkTitle) savedOkTitle.textContent = 'Alerta desactivada'
+                    if (savedOkText) savedOkText.textContent = 'La alerta se ha desactivado correctamente.'
+                    
+                    showSavedOk(() => {
+                        // Restaurar texto original después de mostrar
+                        if (savedOkTitle) savedOkTitle.textContent = 'Cambios guardados'
+                        if (savedOkText) savedOkText.textContent = 'Se guardaron los cambios correctamente.'
+                    })
                 })
 
                 alertModalReactivate.addEventListener('click', () => {
@@ -4426,6 +4438,18 @@
                     }
                     closeViewAlertModal()
                     renderAlertsScreen()
+                    
+                    // Personalizar modal de confirmación
+                    const savedOkTitle = document.getElementById('saved-ok-title')
+                    const savedOkText = document.getElementById('saved-ok-text')
+                    if (savedOkTitle) savedOkTitle.textContent = 'Alerta reactivada'
+                    if (savedOkText) savedOkText.textContent = 'La alerta se ha reactivado correctamente.'
+                    
+                    showSavedOk(() => {
+                        // Restaurar texto original después de mostrar
+                        if (savedOkTitle) savedOkTitle.textContent = 'Cambios guardados'
+                        if (savedOkText) savedOkText.textContent = 'Se guardaron los cambios correctamente.'
+                    })
                 })
 
                 alertModalModify.addEventListener('click', () => {
@@ -5659,10 +5683,10 @@
                         ✓
                     </div>
                     <div>
-                        <div class="text-lg font-semibold text-gray-800 dark:text-gray-100">
+                        <div id="saved-ok-title" class="text-lg font-semibold text-gray-800 dark:text-gray-100">
                             Cambios guardados
                         </div>
-                        <div class="text-sm text-gray-600 dark:text-gray-300 mt-1">
+                        <div id="saved-ok-text" class="text-sm text-gray-600 dark:text-gray-300 mt-1">
                             Se guardaron los cambios correctamente.
                         </div>
                     </div>

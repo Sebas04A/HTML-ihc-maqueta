@@ -4377,10 +4377,11 @@
                 alertModalCancel.addEventListener('click', closeViewAlertModal)
 
                 alertModalDelete.addEventListener('click', () => {
-                    const id = modalViewAlert.dataset.alertId
-                    alertsDB = alertsDB.filter(a => a.id !== id)
-                    closeViewAlertModal()
-                    renderAlertsScreen()
+                    // Mostrar modal de confirmación en lugar de eliminar directamente
+                    const confirmDeleteAlertModal = document.getElementById('confirm-delete-alert-modal')
+                    if (confirmDeleteAlertModal) {
+                        confirmDeleteAlertModal.classList.remove('hidden')
+                    }
                 })
 
                 alertModalDeactivate.addEventListener('click', () => {
@@ -4453,13 +4454,70 @@
                         })
 
                     if (selectedIds.length > 0) {
-                        alertsDB = alertsDB.filter(a => !selectedIds.includes(a.id))
-                        toggleAlertSelectionMode(false) // Sale del modo edición y re-renderiza
+                        // Mostrar modal de confirmación en lugar de eliminar directamente
+                        const confirmDeleteSelectedAlertsModal = document.getElementById('confirm-delete-selected-alerts-modal')
+                        if (confirmDeleteSelectedAlertsModal) {
+                            confirmDeleteSelectedAlertsModal.classList.remove('hidden')
+                        }
                     } else {
                         // No usar alert()
                         console.warn('No hay alertas seleccionadas para eliminar.')
                     }
                 })
+
+                // --- MODAL DE CONFIRMACIÓN PARA ELIMINAR ALERTA ---
+                const confirmDeleteAlertModal = document.getElementById('confirm-delete-alert-modal')
+                const confirmDeleteAlertCancelBtn = document.getElementById('confirm-delete-alert-cancel-btn')
+                const confirmDeleteAlertConfirmBtn = document.getElementById('confirm-delete-alert-confirm-btn')
+
+                // Cancelar eliminación de alerta
+                if (confirmDeleteAlertCancelBtn && confirmDeleteAlertModal) {
+                    confirmDeleteAlertCancelBtn.addEventListener('click', () => {
+                        confirmDeleteAlertModal.classList.add('hidden')
+                    })
+                }
+
+                // Confirmar eliminación de alerta
+                if (confirmDeleteAlertConfirmBtn && confirmDeleteAlertModal) {
+                    confirmDeleteAlertConfirmBtn.addEventListener('click', () => {
+                        const id = modalViewAlert.dataset.alertId
+                        alertsDB = alertsDB.filter(a => a.id !== id)
+                        confirmDeleteAlertModal.classList.add('hidden')
+                        closeViewAlertModal()
+                        renderAlertsScreen()
+                    })
+                }
+
+                // --- MODAL DE CONFIRMACIÓN PARA ELIMINAR ALERTAS SELECCIONADAS ---
+                const confirmDeleteSelectedAlertsModal = document.getElementById('confirm-delete-selected-alerts-modal')
+                const confirmDeleteSelectedAlertsCancelBtn = document.getElementById('confirm-delete-selected-alerts-cancel-btn')
+                const confirmDeleteSelectedAlertsConfirmBtn = document.getElementById('confirm-delete-selected-alerts-confirm-btn')
+
+                // Cancelar eliminación de alertas seleccionadas
+                if (confirmDeleteSelectedAlertsCancelBtn && confirmDeleteSelectedAlertsModal) {
+                    confirmDeleteSelectedAlertsCancelBtn.addEventListener('click', () => {
+                        confirmDeleteSelectedAlertsModal.classList.add('hidden')
+                    })
+                }
+
+                // Confirmar eliminación de alertas seleccionadas
+                if (confirmDeleteSelectedAlertsConfirmBtn && confirmDeleteSelectedAlertsModal) {
+                    confirmDeleteSelectedAlertsConfirmBtn.addEventListener('click', () => {
+                        const selectedIds = []
+                        document
+                            .querySelectorAll('#alert-list-past .alert-card.selected')
+                            .forEach(card => {
+                                selectedIds.push(card.dataset.alertId)
+                            })
+
+                        if (selectedIds.length > 0) {
+                            alertsDB = alertsDB.filter(a => !selectedIds.includes(a.id))
+                            toggleAlertSelectionMode(false) // Sale del modo edición y re-renderiza
+                        }
+                        
+                        confirmDeleteSelectedAlertsModal.classList.add('hidden')
+                    })
+                }
 
                 // --- INICIALIZACIÓN ---
                 renderHomeCategories()
@@ -5475,6 +5533,68 @@
                         class="px-4 py-2 rounded-lg bg-red-600 text-white hover:bg-red-700"
                     >
                         Eliminar
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal: Confirmar eliminación de alerta -->
+        <div
+            id="confirm-delete-alert-modal"
+            class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black/50 backdrop-blur-sm"
+        >
+            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-xl w-11/12 max-w-sm p-5">
+                <div class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-2">
+                    Confirmar eliminación
+                </div>
+                <div class="text-sm text-gray-600 dark:text-gray-300 mb-5">
+                    ¿Estás seguro que deseas eliminar esta alerta? Esta acción no se puede deshacer.
+                </div>
+                <div class="flex justify-end gap-3">
+                    <button
+                        id="confirm-delete-alert-cancel-btn"
+                        type="button"
+                        class="px-4 py-2 bg-gray-200 text-black rounded-lg font-semibold hover:bg-gray-300 transition dark:bg-gray-700 dark:text-black dark:hover:bg-gray-600 dark:border dark:border-gray-600"
+                    >
+                        Cancelar
+                    </button>
+                    <button
+                        id="confirm-delete-alert-confirm-btn"
+                        type="button"
+                        class="px-4 py-2 rounded-lg bg-red-600 text-white hover:bg-red-700"
+                    >
+                        Eliminar Alerta
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal: Confirmar eliminación de alertas seleccionadas -->
+        <div
+            id="confirm-delete-selected-alerts-modal"
+            class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black/50 backdrop-blur-sm"
+        >
+            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-xl w-11/12 max-w-sm p-5">
+                <div class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-2">
+                    Confirmar eliminación
+                </div>
+                <div class="text-sm text-gray-600 dark:text-gray-300 mb-5">
+                    ¿Estás seguro que deseas eliminar las alertas seleccionadas? Esta acción no se puede deshacer.
+                </div>
+                <div class="flex justify-end gap-3">
+                    <button
+                        id="confirm-delete-selected-alerts-cancel-btn"
+                        type="button"
+                        class="px-4 py-2 bg-gray-200 text-black rounded-lg font-semibold hover:bg-gray-300 transition dark:bg-gray-700 dark:text-black dark:hover:bg-gray-600 dark:border dark:border-gray-600"
+                    >
+                        Cancelar
+                    </button>
+                    <button
+                        id="confirm-delete-selected-alerts-confirm-btn"
+                        type="button"
+                        class="px-4 py-2 rounded-lg bg-red-600 text-white hover:bg-red-700"
+                    >
+                        Eliminar Seleccionadas
                     </button>
                 </div>
             </div>

@@ -1582,37 +1582,7 @@
                                     ></select>
                                 </div>
                                 <!-- Pasos opcionales -->
-                                <div>
-                                    <details>
-                                        <summary class="font-semibold text-blue-600 cursor-pointer">
-                                            Detalles y Alertas (Opcional)
-                                        </summary>
-                                        <div
-                                            class="p-3 mt-2 space-y-4 bg-gray-50 rounded-lg dark:bg-gray-700"
-                                        >
-                                            <input
-                                                type="number"
-                                                placeholder="Costo"
-                                                class="w-full p-2 border rounded"
-                                            />
-                                            <div>
-                                                <label
-                                                    class="text-sm text-gray-600 dark:text-gray-300"
-                                                    >Fecha de compra</label
-                                                >
-                                                <input
-                                                    type="date"
-                                                    class="w-full p-2 border rounded"
-                                                />
-                                            </div>
-                                            <button
-                                                class="w-full py-2 text-sm font-semibold text-blue-600 border-2 border-blue-500 border-dashed rounded-lg"
-                                            >
-                                                + Añadir Alerta
-                                            </button>
-                                        </div>
-                                    </details>
-                                </div>
+                                
                             </div>
                             <div class="p-4">
                                 <button
@@ -2026,7 +1996,7 @@
                         <!-- HEADER: imagen SIEMPRE a la izquierda (también en móvil) + nombre/descripcion a la derecha -->
                         <div class="grid grid-cols-[110px_1fr] md:grid-cols-[260px_1fr] gap-3 md:gap-4 mb-4 items-start">
                             <!-- Imagen izquierda: tamaño fijo (el contenedor NO crece), la imagen se adapta -->
-                            <div class="relative w-[110px] h-[146px] md:w-64 md:h-80 shrink-0 overflow-hidden rounded-xl border border-gray-300 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 dark:border-gray-600">
+                            <div class="relative 110px h-full w-full md:w-64 md:h-80 shrink-0 overflow-hidden rounded-xl border border-gray-300 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 dark:border-gray-600">
                                 <img
                                     id="detail-image"
                                     src=""
@@ -2142,7 +2112,7 @@
                             <div class="pt-2">
                                 <button
                                     id="detail-save-btn"
-                                    class="w-full py-3 font-semibold text-white bg-blue-600 rounded-lg shadow hover:bg-blue-700 transition"
+                                    class="w-full py-3 mb-3 font-semibold text-white bg-blue-600 rounded-lg shadow hover:bg-blue-700 transition"
                                 >
                                     Guardar cambios
                                 </button>
